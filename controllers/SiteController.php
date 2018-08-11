@@ -3,15 +3,20 @@
 require_once('librerias/smarty/libs/Smarty.class.php');
 require_once('BaseController.php');
 require_once('models/UsuarioModel.php');
+require_once('models/PublicacionModel.php');
 require_once('librerias/seguridad.php');
 
 class SiteController extends BaseController {
 
     function IndexAction() {
+        $publicacionModel = new PublicacionModel();
 
+        $listaRecetas = $publicacionModel->getRecetasHome();
+        $listaNotas = $publicacionModel->getNotasHome();
+        // $sendData = array("publicaciones" => $listaPublicaciones, "Test" => "1");
 
-//Muestro el resultado al Cliente
-        $this->render("sites/index", ["Test" => "1"]);
+        //Muestro el resultado al Cliente
+        $this->render("sites/index", ["Test" => "1", "recetas" => $listaRecetas, "notas" => $listaNotas]);
     }
 
     function LoginAction() {
@@ -36,14 +41,9 @@ class SiteController extends BaseController {
         $this->render("login", $control);
     }
 
-    
-    
-    function LogoutAction(){
+    function LogoutAction() {
         $_SESSION["user"] = null;
         header('Location: index.php?site/index');
-        
-        
     }
+
 }
-
-
