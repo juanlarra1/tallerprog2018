@@ -36,7 +36,6 @@ class CategoriaModel {
         $cn = $this->conectarDB();
         if ($cn) {
             if(!$this->existeCategoria()) {
-
                 $cn->consulta(
                         "insert into categorias"
                         . "(nombre, eliminado)"
