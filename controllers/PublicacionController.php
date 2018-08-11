@@ -1,16 +1,20 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+require_once('librerias/smarty/libs/Smarty.class.php');
+require_once('BaseController.php');
+require_once('models/PublicacionModel.php');
+require_once('librerias/seguridad.php');
 
-/**
- * Description of PublicacionController
- *
- * @author Larra
- */
 class PublicacionController extends BaseController {
-    //put your code here
+    
+    function ListadoAction() {
+
+        $publicacionModel = new PublicacionModel();
+
+        $listaPublicaciones = $publicacionModel->getAllPublicaciones();
+        
+        $sendData = array("publicaciones" => $listaPublicaciones);
+
+        $this->render("listadoPublicaciones", $sendData);
+    }
 }
