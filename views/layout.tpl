@@ -16,7 +16,8 @@ and open the template in the editor.
         <script src="librerias/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
         <link href="librerias/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="librerias/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-        
+        <link href="Librerias/Bootstrap/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="Librerias/Bootstrap/bootstrap-datepicker.min.js" type="text/javascript"></script>
         <title></title>
     </head>
     <body>
