@@ -7,8 +7,8 @@
             <ul class="nav navbar-nav">
                
               <li class="active"><a href="index.php">Home</a></li>
-              <li><a href="#">Listar Publicaciones</a></li>
-              <li><a href="index.php?op=usuario/crear">Registrar Usuario</a></li>
+              <li><a href="index.php?op=usuario/listado">Listar Usr</a></li>
+              <li><a href="index.php?op=usuario/registro">Registrar Usuario</a></li>
               {if $smarty.session.user.isAdmin eq true}
               <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown">Administrar Categorias

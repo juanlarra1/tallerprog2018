@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of BaseController
- *
- * @author Larra
- */
 class BaseController {
     function render ($view, $data){
 
@@ -23,10 +12,13 @@ class BaseController {
     //Indicamos las carpetas a usar por SMARTY
     $smarty->template_dir = "views";
     $smarty->compile_dir = "templates_c";
+    
+    //Toda la data que se muestre la mando
     foreach ($data as $key => $value){
         $smarty->assign($key, $value);
         
     }
+    //mando la view a mostrar al layout, y hago que displayee el layout
     $smarty->assign("viewFile", $view . ".tpl");
     $smarty->display("layout.tpl");
     
@@ -40,3 +32,4 @@ class BaseController {
         exit();
     }
 }
+
