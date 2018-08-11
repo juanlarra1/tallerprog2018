@@ -4,6 +4,8 @@
     <head>
         <title>Alta Publicacion</title>
         <script src="recursos/js/registroPublicacion.js" type="text/javascript"></script>
+        <link href="librerias/Bootstrap/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="librerias/Bootstrap/bootstrap-datepicker.min.js" type="text/javascript"></script>
     </head>
     <body>
 
