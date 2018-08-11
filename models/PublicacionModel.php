@@ -17,6 +17,44 @@ class PublicacionModel {
         return $conn;
     }
     
+    function getNotasHome() {
+        /*Devuelve las ultimas 4 publicaciones de tipo Nota
+         * texto de publicacion limitada a 150 caracteres
+         * para mostrar en el home /index */
+        
+        $cn = $this->conectarDB();
+        
+        if ($cn) {
+            $cn->consulta(
+                    "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
+                . "p.fecha as fecha, p.imagen as imagen, c.nombre as nombre, c.categoria_id "
+                . " FROM publicaciones p, categorias c "
+                . "WHERE (p.tipo_id = 2 AND p.categoria_id = c.categoria_id)"
+                . "ORDER BY p.Fecha DESC limit 4");
+            $res = $cn->restantesRegistros();
+            return $res;
+        }
+    }
+    
+    function getRecetasHome() {
+        
+         /*Devuelve las ultimas 4 publicaciones de tipo Receta
+         * texto de publicacion limitada a 150 caracteres
+         * para mostrar en el home /index */
+        $cn = $this->conectarDB();
+        
+        if ($cn) {
+            $cn->consulta(
+                    "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
+                . "p.fecha as fecha, p.imagen as imagen, c.nombre as nombre, c.categoria_id "
+                . " FROM publicaciones p, categorias c "
+                . "WHERE (p.tipo_id = 1 AND p.categoria_id = c.categoria_id)"
+                . "ORDER BY p.Fecha DESC limit 4");
+            $res = $cn->restantesRegistros();
+            return $res;
+        }
+    }
+    
     function getAllPublicaciones() {
         $cn = $this->conectarDB();
         
@@ -25,6 +63,29 @@ class PublicacionModel {
                     "select * from publicaciones");
             $res = $cn->restantesRegistros();
 
+            return $res;
+        }
+    }
+    
+    function getAllTiposPublicaciones() {
+        $cn = $this->conectarDB();
+        
+        if ($cn) {
+            $cn->consulta(
+                    "select * from tipos");
+            $res = $cn->restantesRegistros();
+
+            return $res;
+        }
+    }
+    
+    function getAllCategorias() {
+        $cn = $this->conectarDB();
+        
+        if ($cn) {
+            $cn->consulta(
+                    "select * from categorias");
+            $res = $cn->restantesRegistros();
             return $res;
         }
     }

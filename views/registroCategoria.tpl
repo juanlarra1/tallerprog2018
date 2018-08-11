@@ -6,7 +6,6 @@
         <div class="col-md-6 col-md-offset-3">  
             <h1> Alta Categoria</h1>
             <br><br>
-
                 <form method="POST" action="index.php?op=categoria/registro" id="formCategoria" >
 
                 <div class="form-group">

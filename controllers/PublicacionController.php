@@ -12,8 +12,9 @@ class PublicacionController extends BaseController {
         $publicacionModel = new PublicacionModel();
 
         $listaPublicaciones = $publicacionModel->getAllPublicaciones();
+        $listaTiposPublicaciones = $publicacionModel->getAllTiposPublicaciones();
         
-        $sendData = array("publicaciones" => $listaPublicaciones);
+        $sendData = array("publicaciones" => $listaPublicaciones, "tiposPublicaciones" => $listaTiposPublicaciones);
 
         $this->render("listadoPublicaciones", $sendData);
     }

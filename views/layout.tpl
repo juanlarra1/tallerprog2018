@@ -9,9 +9,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <script src="librerias/js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
-      
         
-        <!-- Boostrap -->
+
+      <!-- Boostrap -->
+        <script src="librerias/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="librerias/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
         <link href="librerias/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="librerias/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
         
