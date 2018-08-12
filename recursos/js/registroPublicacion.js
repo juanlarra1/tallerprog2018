@@ -8,8 +8,8 @@ function inicializoRP() {
             format: 'dd/mm/yyyy',
             container: container,
             todayHighlight: true,
-            autoclose: true,
-        })
+            autoclose: true
+        });
     
 }
 

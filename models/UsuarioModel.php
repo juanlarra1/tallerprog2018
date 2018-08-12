@@ -10,8 +10,10 @@ class UsuarioModel {
     var $nombre;
     var $errors = ['email' => [], 'password' => [], 'nombre' => []];
 
+    
+    
     function conectarDB() {
-        $conn = new ConexionBD("mysql", "localhost", "Obligatorio", "root", "root");
+        $conn = new ConexionBD(MOTOR, SERVIDOR, BASE, USUARIO, CLAVE);
         $conn->conectar();
         return $conn;
     }
@@ -28,7 +30,6 @@ class UsuarioModel {
     function checkLogin() {
         $con = $this->conectarDB();
         if (!$con->conectar()) {
-
             echo ("error bd");
         } else {
             $con->consulta(
@@ -40,6 +41,7 @@ class UsuarioModel {
             if (empty($usr)) {
                 return false;
             }
+            
             unset($usr["password"]); // saca la pass de los datos
             return $usr;
         }

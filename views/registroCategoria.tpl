@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-
 <html>
-       <body>
-
+    <head>
+        <script src="recursos/js/registroCategoria.js" type="text/javascript"></script>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
         <div class="col-md-6 col-md-offset-3">  
             <h1> Alta Categoria</h1>
             <br><br>
@@ -13,7 +15,7 @@
                     <input type="text" id="txtNombreCategoria" name="txtNombreCategoria" value="" class="form-control">
                     <div id="errorNombreC" name="errorNombreC" class="">  </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="chkCategoriaEliminada"> Eliminada </label>
                     <input type="checkbox" id="chkCategoriaEliminada" name="chkCategoriaEliminada" value="N">

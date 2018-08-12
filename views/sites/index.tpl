@@ -1,7 +1,6 @@
 *{$smarty.session.user.email}*
 
- 
-    <div  id="seccionRecetas" class="container col-md-6 border thin solid black">
+ <div  id="seccionRecetas" class="container col-md-6 border thin solid black">
     
         <a href="index.php?op=publicacion/listado" alt="1"><h3>Recetas</h3></a>
  
