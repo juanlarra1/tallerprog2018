@@ -109,18 +109,30 @@ class PublicacionModel {
 
     function crearPublicacion() {
         $cn = $this->conectarDB();
+
+
         if ($cn) {
-            if (!$this->existePublicacion()) {
-                $cn->consulta(
-                        "insert into publicaciones"
-                        . "(titulo, texto, fecha, imagen)"
-                        . " values(:tit, :tex, :fec, :img)", array(
-                    array("tit", $this->titulo, 'string'),
-                    array("tex", $this->texto, 'string'),
-                    array("fec", $this->fecha, 'string'),
-                    array("img", $this->imagen, 'string'),
-                ));
-            }
+
+            $cn->consulta(
+                    "select categoria_id from categorias where nombre=:nom", array(
+                array("nom", $this->nombre, 'string')
+            ));
+
+            $catId = $cn->restantesRegistros();
+            var_dump($this->nombre);
+            exit();
+
+//            if (!$this->existePublicacion()) {
+//                $cn->consulta(
+//                        "insert into publicaciones"
+//                        . "(titulo, texto, fecha, imagen)"
+//                        . " values(:tit, :tex, :fec, :img)", array(
+//                    array("tit", $this->titulo, 'string'),
+//                    array("tex", $this->texto, 'string'),
+//                    array("fec", $this->fecha, 'string'),
+//                    array("img", $this->imagen, 'string'),
+//                ));
+//            }
         }
     }
 

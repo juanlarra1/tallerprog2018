@@ -41,7 +41,7 @@
                     <label for="txtCategoriaPublicacion">Categoria:</label> 
                     <select class="selectpicker" id="txtCategoriaPublicacion" name="txtCategoriaPublicacion">
                       {foreach from=$categorias item=categoria} 
-                        <option>{$categoria['nombre']}</option>
+                        <option>{$categoria['categoria_id']} -  {$categoria['nombre']}</option>
                         {/foreach}
                       </select>
 
