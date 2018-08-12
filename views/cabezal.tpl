@@ -10,6 +10,8 @@
               <li><a href="index.php?op=admin/listado">Listar Usr</a></li>
               <li><a href="index.php?op=usuario/registro">Registrar Usuario</a></li>
                <li><a href="index.php?op=publicacion/listado">Listado Publicaciones</a></li>
+               
+               
               {if $smarty.session.user.isAdmin eq true}
               <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown">Administrar Categorias
@@ -28,7 +30,7 @@
                       <li><a href="#">Modificacion</a></li>
                     </ul>
               </li>
-        {/if}     
+            {/if}     
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {if !empty($smarty.session.user)}  
