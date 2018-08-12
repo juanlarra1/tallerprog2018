@@ -1,6 +1,6 @@
 $(document).ready(inicializoRU);
 function inicializoRU() {
-   // $("#txtNombreUsuario").blur(validarNombre);
+    $("#txtNombre").blur(validarNombre);
     $("#txtEmailUsuario").blur(validarEmail);
     $("#txtPassword").blur(validarPassword);
    
@@ -32,6 +32,20 @@ function validarPassword() {
 
 }
 
+
+function validarNombre() {
+    var dato = $(this).val();
+    if (!validarNombreLogico(dato)) {
+        $("#errorNombre").html("El nombre ingresado no es valido.");
+        $("#errorNombre").addClass("alert alert-danger");
+       
+    }else{
+        $("#errorNombre").removeClass("alert alert-danger");
+        $("#errorNombre").html(" ");
+    }
+
+}
+
 function mostrarPassword(){    
     var x = document.getElementById("txtPassword");
     if (x.type === "password") {
@@ -53,10 +67,18 @@ function validarEmailLogico(mail) {
 function validarPasswordLogico(password) {
     var retorno = false;
     var patron = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-    if (password.length >=8 && patron.test(password)) {
+    if (password.length >=8 && (patron.test(password))) {
        retorno=true;
-    }
-    
+    }    
     return retorno;
-
 }
+
+function validarNombreLogico (nombre) {
+        var retorno = false;
+
+        var patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
+        if (nombre.length >= 2 && (patron.test(nombre))) {
+            retorno = true;
+        }
+        return retorno;
+    }

@@ -50,7 +50,7 @@ class PublicacionController extends BaseController {
 
         $control = array("publicacionModel" => $publicacionModel, "categorias" => $listaCategorias);
 
-           $this->render("registroPublicacion", $control);
+        $this->render("registroPublicacion", $control);
     }
 
 }
