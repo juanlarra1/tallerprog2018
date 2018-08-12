@@ -45,7 +45,6 @@ class SiteController extends BaseController {
         $_SESSION["user"] = null;
         header('Location: index.php?site/index');
     }
-<<<<<<< HEAD
 
 }
 
@@ -59,7 +58,6 @@ class SiteController extends BaseController {
   $this->jsonEncode(["mensaje" => "Credenciales Incorrectas"]);
   }
 
-=======
->>>>>>> a6085bbaae76627553685103470323fa591f76cd
+*/
 
-}
+

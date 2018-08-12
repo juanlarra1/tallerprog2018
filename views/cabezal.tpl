@@ -7,7 +7,7 @@
             <ul class="nav navbar-nav">
 
               <li class="active"><a href="index.php">Home</a></li>
-              <li><a href="index.php?op=usuario/listado">Listar Usr</a></li>
+              <li><a href="index.php?op=admin/listado">Listar Usr</a></li>
               <li><a href="index.php?op=usuario/registro">Registrar Usuario</a></li>
                <li><a href="index.php?op=publicacion/listado">Listado Publicaciones</a></li>
               {if $smarty.session.user.isAdmin eq true}

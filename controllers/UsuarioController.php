@@ -7,17 +7,8 @@ require_once('librerias/seguridad.php');
 
 class UsuarioController extends BaseController {
 
-    function ListadoAction() {
 
-        $userModel = new UsuarioModel();
-
-        $listaUsers = $userModel->getAllUsuarios();
-
-        $sendData = array("users" => $listaUsers);
-
-        $this->render("listadoUsuarios", $sendData);
-    }
-
+ 
     function RegistroAction() {
         $userModel = new UsuarioModel();
         if (!empty($_POST)) {

@@ -1,14 +1,12 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
+    <div>
         <title>Alta Publicacion</title>
         <script src="recursos/js/registroPublicacion.js" type="text/javascript"></script>
         <link href="librerias/Bootstrap/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="librerias/Bootstrap/bootstrap-datepicker.min.js" type="text/javascript"></script>
         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
+    </div>
+    <div>
 
         <div class="col-md-6 col-md-offset-3">  
             <h1> Alta Publicación</h1>
@@ -51,5 +49,4 @@
                 <input type="reset" value="Cancelar" id="btnCancelarCategoria" class="btn-primary btn-lg">
             </form>
         </div>
-    </body>
-</html>
+</div>

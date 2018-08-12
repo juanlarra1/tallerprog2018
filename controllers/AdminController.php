@@ -1,19 +1,29 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Larra
- * Date: 12/8/2018
- * Time: 3:58
- */
-
+require_once('librerias/smarty/libs/Smarty.class.php');
+require_once('BaseController.php');
+require_once('models/UsuarioModel.php');
 class AdminController extends BaseController
 {
 
-    function upgradeAdminAction($userEmail){
+    function upgradeAdminAction(){
+        $userAdmin =  new UsuarioModel();
+        $userAdmin->email = $_GET['user'];
+        $userAdmin->ascenderUsuario();
+       $this->ListadoAction();
+       
 
 
+    }
 
+    function ListadoAction() {
 
+        $userModel = new UsuarioModel();
+
+        $listaUsers = $userModel->getAllUsuarios();
+
+        $sendData = array("users" => $listaUsers);
+
+        $this->render("listadoUsuarios", $sendData);
     }
 
 }

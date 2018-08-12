@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-
-<html>
-       <body>
-
-        <div class="col-md-6 col-md-offset-3">  
+        <div class="col-md-6 col-md-offset-3">
             <h1> Alta Categoria</h1>
             <br><br>
                 <form method="POST" action="index.php?op=categoria/registro" id="formCategoria" >
@@ -23,5 +18,3 @@
                 <input type="reset" value="Cancelar" id="btnCancelarCategoria" class="btn-primary btn-lg">
             </form>
         </div>
-    </body>
-</html>
