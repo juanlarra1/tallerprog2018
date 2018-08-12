@@ -6,7 +6,6 @@ function inicializoRU() {
    
 }
 
-
 function validarEmail() {
      var dato = $(this).val();
     if (validarEmailLogico(dato) === false) {

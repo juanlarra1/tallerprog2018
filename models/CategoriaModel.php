@@ -10,7 +10,7 @@ class CategoriaModel {
     var $errors = ['nombre' => [], 'eliminado' => []];
 
     function conectarDB() {
-        $conn = new ConexionBD("mysql", "localhost", "Obligatorio", "root", "root");
+        $conn = new ConexionBD(MOTOR, "localhost", "Obligatorio", "root", "root");
         $conn->conectar();
         return $conn;
     }
