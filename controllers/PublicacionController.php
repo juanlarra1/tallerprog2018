@@ -3,6 +3,7 @@
 require_once('librerias/smarty/libs/Smarty.class.php');
 require_once('BaseController.php');
 require_once('models/PublicacionModel.php');
+require_once('models/CategoriaModel.php');
 require_once('librerias/seguridad.php');
 
 class PublicacionController extends BaseController {
@@ -26,11 +27,13 @@ class PublicacionController extends BaseController {
             $texto = xss_clean($_POST['txtTextoPublicacion']);
             $fecha = xss_clean($_POST['date']);
             $imagen = xss_clean($_POST['txtImagenPublicacion']);
+            $categoria = xss_clean($_POST['txtCategoriaPublicacion']);
 
             $publicacionModel->titulo = $titulo;
             $publicacionModel->texto = $texto;
             $publicacionModel->fecha = $fecha;
             $publicacionModel->imagen = $imagen;
+            $publicacionModel->imagen = $categoria;
 
             if ($publicacionModel->existePublicacion() == null) {
 
@@ -39,10 +42,15 @@ class PublicacionController extends BaseController {
                 exit;
             }
         }
-        $control = array("publicacionModel" => $publicacionModel);
 
 
-        $this->render("registroPublicacion", $control);
+        $categoriaModel = new CategoriaModel();
+
+        $listaCategorias = $categoriaModel->getAllCategorias();
+
+        $control = array("publicacionModel" => $publicacionModel, "categorias" => $listaCategorias);
+
+           $this->render("registroPublicacion", $control);
     }
 
 }

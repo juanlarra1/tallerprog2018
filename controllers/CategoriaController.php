@@ -17,7 +17,7 @@ class CategoriaController extends BaseController {
             $categoriaModel->nombre = $nombre;
             $categoriaModel->eliminado = $eliminado;
 
-            if ($categoriaModel->validarCategoria()==null) {
+            if ($categoriaModel->validarCategoria() == null) {
 
                 $categoriaModel->crearCategoria();
                 header('Location: index.php?categoria/index');
@@ -30,4 +30,6 @@ class CategoriaController extends BaseController {
         $this->render("registroCategoria", $control);
     }
 
+    
+     
 }

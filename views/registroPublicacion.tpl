@@ -6,6 +6,7 @@
         <script src="recursos/js/registroPublicacion.js" type="text/javascript"></script>
         <link href="librerias/Bootstrap/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="librerias/Bootstrap/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -38,6 +39,12 @@
 
                 <div class="form-group">
                     <label for="txtCategoriaPublicacion">Categoria:</label> 
+                    <select class="selectpicker" id="txtCategoriaPublicacion" name="txtCategoriaPublicacion">
+                      {foreach from=$categorias item=categoria} 
+                        <option>{$categoria['nombre']}</option>
+                        {/foreach}
+                      </select>
+
 
                 </div>
                 <input type="submit" value="Guardar" id="btnGrabarCategoria" class="btn-primary btn-lg">

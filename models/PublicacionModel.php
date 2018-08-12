@@ -124,4 +124,22 @@ class PublicacionModel {
         }
     }
 
+    function borrarPublicacion() {
+        $cn = $this->conectarDB();
+        if ($cn) {
+            $sql = "DELETE FROM publicaciones WHERE id = :id";
+            $parametros = array();
+            $parametros[0] = array("id", $id, "int");
+
+            $result = $cn->consulta($sql, $parametros);
+
+            if ($result) {
+                header("Location: index.php");
+            } else {
+
+                header("Location: errores.php");
+            }
+        }
+    }
+
 }

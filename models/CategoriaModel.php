@@ -35,7 +35,7 @@ class CategoriaModel {
     function crearCategoria() {
         $cn = $this->conectarDB();
         if ($cn) {
-            if(!$this->existeCategoria()) {
+            if (!$this->existeCategoria()) {
                 $cn->consulta(
                         "insert into categorias"
                         . "(nombre, eliminado)"
@@ -65,6 +65,18 @@ class CategoriaModel {
 
             $isValid = false;
             array_push($this->errors['nombre'], 'El formato de nombre no es correcto');
+        }
+    }
+
+    function getAllCategorias() {
+        $cn = $this->conectarDB();
+
+        if ($cn) {
+            $cn->consulta(
+                    "select * from categorias");
+            $res = $cn->restantesRegistros();
+           
+            return $res;
         }
     }
 
