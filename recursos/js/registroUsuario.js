@@ -3,16 +3,15 @@ function inicializoRU() {
     $("#txtNombre").blur(validarNombre);
     $("#txtEmailUsuario").blur(validarEmail);
     $("#txtPassword").blur(validarPassword);
-   
+
 }
 
 function validarEmail() {
-     var dato = $(this).val();
+    var dato = $(this).val();
     if (validarEmailLogico(dato) === false) {
         $("#errorEmailU").html("El correo electronico no es correcto");
         $("#errorEmailU").addClass("alert alert-danger");
-    }
-    else{
+    } else {
         $("#errorEmailU").removeClass("alert alert-danger");
         $("#errorEmailU").html(" ");
     }
@@ -24,8 +23,8 @@ function validarPassword() {
     if (!validarPasswordLogico(dato)) {
         $("#errorPassword").html("La contraseña ingresada no es valida. La misma debe tener al menos 8 caracteres, 1 mayusucula, 1 numero y 1 minuscula");
         $("#errorPassword").addClass("alert alert-danger");
-       
-    }else{
+
+    } else {
         $("#errorPassword").removeClass("alert alert-danger");
         $("#errorPassword").html(" ");
     }
@@ -38,15 +37,15 @@ function validarNombre() {
     if (!validarNombreLogico(dato)) {
         $("#errorNombre").html("El nombre ingresado no es valido.");
         $("#errorNombre").addClass("alert alert-danger");
-       
-    }else{
+
+    } else {
         $("#errorNombre").removeClass("alert alert-danger");
         $("#errorNombre").html(" ");
     }
 
 }
 
-function mostrarPassword(){    
+function mostrarPassword() {
     var x = document.getElementById("txtPassword");
     if (x.type === "password") {
         x.type = "text";
@@ -59,7 +58,7 @@ function validarEmailLogico(mail) {
     var retorno = true;
     var patron = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!patron.test(mail)) {
-       retorno = false;
+        retorno = false;
     }
     return retorno;
 }
@@ -67,18 +66,18 @@ function validarEmailLogico(mail) {
 function validarPasswordLogico(password) {
     var retorno = false;
     var patron = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/;
-    if (password.length >=8 && (patron.test(password))) {
-       retorno=true;
-    }    
+    if (password.length >= 8 && (patron.test(password))) {
+        retorno = true;
+    }
     return retorno;
 }
 
-function validarNombreLogico (nombre) {
-        var retorno = false;
+function validarNombreLogico(nombre) {
+    var retorno = false;
 
-        var patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
-        if (nombre.length >= 2 && (patron.test(nombre))) {
-            retorno = true;
-        }
-        return retorno;
+    var patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
+    if (nombre.length >= 2 && (patron.test(nombre))) {
+        retorno = true;
     }
+    return retorno;
+}
