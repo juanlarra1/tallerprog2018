@@ -1,11 +1,11 @@
- <div>
+<div>
     <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">                
                 <a class="navbar-brand" style="pointer-events: none;"><img src="img/gastronomia.png" alt="logo de gastronomia" style="display: inline-block; align-items: center" height="30px"/>Blog de Gastronomia</a>
             </div>
             <ul class="nav navbar-nav">
-               
+
               <li class="active"><a href="index.php">Home</a></li>
               <li><a href="index.php?op=usuario/listado">Listar Usr</a></li>
               <li><a href="index.php?op=usuario/registro">Registrar Usuario</a></li>

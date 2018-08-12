@@ -36,14 +36,11 @@ class SiteController extends BaseController {
         $this->render("login", $control);
     }
 
-    
-    
-    function LogoutAction(){
+    function LogoutAction() {
         $_SESSION["user"] = null;
         header('Location: index.php?site/index');
-        
-        
     }
+
 }
 
 /* $user = "usuario@prueba.com";

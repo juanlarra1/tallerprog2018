@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="LAMP">
+    <serverData>
+      <paths name="LAMP">
+        <serverdata>
+          <mappings>
+            <mapping deploy="ObligatorioTallerProgramacion" local="$PROJECT_DIR$" web="/ObligatorioTallerProgramacion" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

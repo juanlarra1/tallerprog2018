@@ -4,18 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/CategoriaController.php</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/img/gastronomia.png</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/PublicacionController.php</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/views/layout.tpl</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/views/sites/index.tpl</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/databaseController.php</file>
             <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/views/cabezal.tpl</file>
             <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/SiteController.php</file>
+            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/PublicacionController.php</file>
             <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/UsuarioController.php</file>
             <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/models/UsuarioModel.php</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/controllers/BaseController.php</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/index.php</file>
-            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/librerias/class.Conexion.BD.php</file>
+            <file>file:/C:/Users/Larra/Documents/NetBeansProjects/ObligatorioTallerProgramacion/recursos/js/login.js</file>
         </group>
     </open-files>
 </project-private>
