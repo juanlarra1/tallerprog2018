@@ -14,20 +14,20 @@
                          alt="RECETAAAAAAAAAAAAAAAAAA">
                 </a>
             </div>
-            <header class="text-left">
+            <div class="col-md-6">
+                <a href="index.php?op=publicacion/verPublicacion&id={$publicacion['publicacion_id']}">{$publicacion['titulo']}</a>
+                <p>{$publicacion['texto']}</p>
+
+                <header class="text-left">
                 <div class="comment-user"><i class="glyphicon glyphicon-user"></i> Autor:</div>
                 <div class="comment-user"><i class="glyphicon glyphicon-glass"></i>
                     Categoria: {$publicacion['categoria_id']} </div>
                 <div class="comment-user"><i class="glyphicon glyphicon-flag"></i> Tipo: {$publicacion['tipo_id']}
                 </div>
-                <time class="comment-date" datetime="16-12-2014 01:05"><i
-                            class="glyphicon glyphicon-time"></i> {$publicacion['fecha']}
+                <time class="comment-date" datetime="16-12-2014 01:05"><i class="glyphicon glyphicon-time"></i> {$publicacion['fecha']}
                 </time>
 
             </header>
-            <div class="col-md-6">
-                <a href="index.php?op=publicacion/verPublicacion&id={$publicacion['publicacion_id']}">{$publicacion['titulo']}</a>
-                <p>{$publicacion['texto']}</p>
 
 
             </div>

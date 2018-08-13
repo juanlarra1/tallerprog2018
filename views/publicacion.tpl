@@ -7,7 +7,7 @@
         <div class="col-lg-12">
 
             <div class="card mt-4">
-                <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                <img src="img/{$publicacion['imagen']}" height="400px" width="900px" alt=""/>
                 <br>
                 <div class="form-row text-center">
                     <div class="col-12">
@@ -20,14 +20,14 @@
                 <div class="card-body">
                     <h3 class="card-title">{$publicacion['titulo']}</h3>
                     <span class="label label-warning">{$categoria}</span>
-
-                    <p class="card-text">{$publicacion['texto']}</p>
+<br><br />
+                    <p class="well well-lg">{$publicacion['texto']}</p>
                 </div>
             </div>
 
 
             <!-- COMENTARIOS ACA ABAJO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-            <h3>Comentarios</h3>
+            <p class="lead">Comentarios</p>
             <article class="row">
 
                 <div class="col-md-12 col-sm-10">

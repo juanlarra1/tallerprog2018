@@ -18,7 +18,7 @@ class SiteController extends BaseController
         // $sendData = array("publicaciones" => $listaPublicaciones, "Test" => "1");
 
         //Muestro el resultado al Cliente
-        $this->render("sites/index", ["Test" => "1", "recetas" => $listaRecetas, "notas" => $listaNotas]);
+        $this->render("sites/index", ["recetas" => $listaRecetas, "notas" => $listaNotas]);
     }
 
     function LoginAction()

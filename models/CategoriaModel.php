@@ -3,26 +3,29 @@
 require_once("librerias/class.Conexion.BD.php");
 require_once("config/configuracion.php");
 
-class CategoriaModel {
+class CategoriaModel
+{
 
     var $nombre;
     var $eliminado;
     var $id;
     var $errors = ['nombre' => [], 'eliminado' => []];
 
-    function conectarDB() {
+    function conectarDB()
+    {
         $conn = new ConexionBD(MOTOR, "localhost", "Obligatorio", "root", "root");
         $conn->conectar();
         return $conn;
     }
 
-    function existeCategoria() {
+    function existeCategoria()
+    {
         $existeCategoria = false;
         $cn = $this->conectarDB();
 
         if ($cn) {
             $cn->consulta(
-                    "select * from categorias where nombre=:nom", array(
+                "select * from categorias where nombre=:nom", array(
                 array("nom", $this->nombre, 'string')
             ));
             $res = $cn->siguienteRegistro();
@@ -34,7 +37,8 @@ class CategoriaModel {
     }
 
 
-    function getCategoriaNombre() {
+    function getCategoriaNombre()
+    {
         $cn = $this->conectarDB();
         if ($cn) {
             $cn->consulta(
@@ -43,20 +47,21 @@ class CategoriaModel {
             ));
             $res = $cn->siguienteRegistro();
             if ($res != null) {
-               return $res['nombre'];
+                return $res['nombre'];
             }
             return null;
         }
     }
 
-    function crearCategoria() {
+    function crearCategoria()
+    {
         $cn = $this->conectarDB();
         if ($cn) {
             if (!$this->existeCategoria()) {
                 $cn->consulta(
-                        "insert into categorias"
-                        . "(nombre, eliminado)"
-                        . " values(:nom, :elim)", array(
+                    "insert into categorias"
+                    . "(nombre, eliminado)"
+                    . " values(:nom, :elim)", array(
                     array("nom", $this->nombre, 'string'),
                     array("elim", $this->eliminado, 'int'),
                 ));
@@ -64,7 +69,8 @@ class CategoriaModel {
         }
     }
 
-    function validarNombre() {
+    function validarNombre()
+    {
         $isValid = false;
 
         $patron = "/[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/";
@@ -75,7 +81,8 @@ class CategoriaModel {
         return $isValid;
     }
 
-    function validarCategoria() {
+    function validarCategoria()
+    {
         $isValid = true;
 
         if (!$this->validarNombre()) {
@@ -85,14 +92,15 @@ class CategoriaModel {
         }
     }
 
-    function getAllCategorias() {
+    function getAllCategorias()
+    {
         $cn = $this->conectarDB();
 
         if ($cn) {
             $cn->consulta(
-                    "select * from categorias");
+                "select * from categorias");
             $res = $cn->restantesRegistros();
-           
+
             return $res;
         }
     }

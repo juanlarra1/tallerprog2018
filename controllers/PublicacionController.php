@@ -15,7 +15,7 @@ class PublicacionController extends BaseController
     {
 
         $publicacionModel = new PublicacionModel();
-
+        $publicacionModel ->categoria = $_GET['catPublicacion'];
         $listaPublicaciones = $publicacionModel->getAllPublicaciones();
         $listaTiposPublicaciones = $publicacionModel->getAllTiposPublicaciones();
 
@@ -23,6 +23,8 @@ class PublicacionController extends BaseController
 
         $this->render("listadoPublicaciones", $sendData);
     }
+
+
 
     function RegistroAction()
     {

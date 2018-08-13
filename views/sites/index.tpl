@@ -1,5 +1,3 @@
-*{$smarty.session.user.email}*
-
  <div  id="seccionRecetas" class="container col-md-6 border thin solid black">
     
         <a href="index.php?op=publicacion/listado" alt="1"><h3>Recetas</h3></a>
@@ -7,7 +5,7 @@
     {foreach from=$recetas item=receta} 
     <div class="panel panel-warning">
         <div class="panel-heading">
-            <a class="panel-title" href="listadoPublicacionesTipo.php"><b>{$receta['titulo']}</b></a> 
+            <a class="panel-title" href="index.php?op=publicacion/verPublicacion&id={$receta['publicacion_id']}"><b>{$receta['titulo']}</b></a>
         </div>
         <div class="panel-body">
             <p>{$receta['texto']}</p>
@@ -25,7 +23,7 @@
     {foreach from=$notas item=nota} 
     <div class="panel panel-warning">
         <div class="panel-heading">
-            <a class="panel-title" href="listadoPublicacionesTipo.php"><b>{$nota['titulo']}</b></a> 
+            <a class="panel-title" href="index.php?op=publicacion/verPublicacion&id={$nota['publicacion_id']}"><b>{$nota['titulo']}</b></a>
         </div>
         <div class="panel-body">
             <p>{$nota['texto']}</p>

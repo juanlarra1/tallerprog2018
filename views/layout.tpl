@@ -27,7 +27,6 @@ and open the template in the editor.
 {if !empty($extraScripts) }
     {foreach from=$extraScripts item=script}
         <script src="{$script}" type="text/javascript"></script>
-
     {/foreach}
 {/if}
 
