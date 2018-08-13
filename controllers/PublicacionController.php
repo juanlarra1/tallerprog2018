@@ -6,8 +6,10 @@ require_once('models/PublicacionModel.php');
 require_once('models/CategoriaModel.php');
 require_once('librerias/seguridad.php');
 
+
 class PublicacionController extends BaseController
 {
+    var $id;
 
     function ListadoAction()
     {
@@ -56,4 +58,15 @@ class PublicacionController extends BaseController
         $this->render("registroPublicacion", $control);
     }
 
+    function VerPublicacionAction(){
+        $cat_data = new CategoriaModel();
+        $publicacionModel = new PublicacionModel();
+        $publicacionModel ->id = $_GET['id'];
+        $publicacion = $publicacionModel->getPublicacion();
+        $cat_data->id = $publicacion['categoria_id'];
+
+        $sendData = array("publicacion" => $publicacion, "categoria"=> $cat_data->getCategoriaNombre());
+        $this->render("publicacion",$sendData);
+
+    }
 }

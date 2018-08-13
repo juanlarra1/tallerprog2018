@@ -7,6 +7,7 @@ class CategoriaModel {
 
     var $nombre;
     var $eliminado;
+    var $id;
     var $errors = ['nombre' => [], 'eliminado' => []];
 
     function conectarDB() {
@@ -29,6 +30,22 @@ class CategoriaModel {
                 $existeCategoria = true;
             }
             return $existeCategoria;
+        }
+    }
+
+
+    function getCategoriaNombre() {
+        $cn = $this->conectarDB();
+        if ($cn) {
+            $cn->consulta(
+                "select * from categorias where categoria_id=:id", array(
+                array("id", $this->id, 'int')
+            ));
+            $res = $cn->siguienteRegistro();
+            if ($res != null) {
+               return $res['nombre'];
+            }
+            return null;
         }
     }
 

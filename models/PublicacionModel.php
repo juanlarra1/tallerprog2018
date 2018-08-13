@@ -20,6 +20,26 @@ class PublicacionModel
         return $conn;
     }
 
+    function getPublicacion()
+    {
+        $cn = $this->conectarDB();
+
+        if ($cn) {
+            $cn->consulta(
+                "select * from publicaciones where publicacion_id=:id", array(
+                array("id", $this->id, 'int')
+            ));
+            $res = $cn->siguienteRegistro();
+            if ($res != null) {
+                return $res;
+            }
+            return null;
+        }
+
+
+    }
+
+
     function getNotasHome()
     {
         /* Devuelve las ultimas 4 publicaciones de tipo Nota

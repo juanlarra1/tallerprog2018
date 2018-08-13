@@ -30,6 +30,14 @@ class CategoriaController extends BaseController {
         $this->render("registroCategoria", $control);
     }
 
+    function getCategoriaNombre($id){
+        $categoriaModel = new CategoriaModel();
+
+        $categoriaModel->id =  $id;
+
+        return $categoriaModel->getCategoriaNombre();
+
+    }
     
      
 }

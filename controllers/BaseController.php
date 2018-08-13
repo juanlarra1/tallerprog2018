@@ -23,8 +23,6 @@ class BaseController
         //mando la view a mostrar al layout, y hago que displayee el layout
         $smarty->assign("viewFile", $view . ".tpl");
         $smarty->display("layout.tpl");
-
-
     }
 
 
