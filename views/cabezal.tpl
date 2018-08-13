@@ -12,7 +12,7 @@
                <li><a href="index.php?op=publicacion/listado">Listado Publicaciones</a></li>
                
                
-              {if $smarty.session.user.isAdmin eq true}
+              {if $smarty.session.user.esAdmin eq true}
               <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown">Administrar Categorias
                     <span class="caret"></span></a>

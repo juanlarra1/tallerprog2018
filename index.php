@@ -1,5 +1,5 @@
 <?php
-
+require_once ('config/configuracion.php');
 session_start();
 
 $op = $_GET["op"];

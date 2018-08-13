@@ -18,11 +18,21 @@ class UsuarioModel
         return $conn;
     }
 
-    function getAllUsuarios()
+    function getAllUsuarios($numeroPagina, $esAdmin)
     {
         $cn = $this->conectarDB();
-        $cn->consulta(
-            "select * from usuarios");
+        $offset = CANTXPAG * ($numeroPagina - 1);
+        $sql = "select * from usuarios ";
+        $parametros = array();
+        if (!empty($esAdmin)) {
+            $sql .= " WHERE administrador = :admin";
+            array_push($parametros, array("admin", $esAdmin, 'int'));
+        }
+        $sql .= " LIMIT :cantPag OFFSET :offset";
+        array_push($parametros, array("cantPag", CANTXPAG, 'int'));
+        array_push($parametros, array("offset", $offset, 'int'));
+
+        $cn->consulta($sql, $parametros);
         $res = $cn->restantesRegistros();
 
         return $res;
@@ -62,6 +72,21 @@ class UsuarioModel
             $existeUsuario = true;
         }
         return $existeUsuario;
+    }
+
+    function esAdmin()
+    {
+        $esAdmin = false;
+        $cn = $this->conectarDB();
+        $cn->consulta(
+            "select * from usuarios where email=:ema", array(
+            array("ema", $this->email, 'string')
+        ));
+        $res = $cn->siguienteRegistro();
+        if ($res["administrador"] == 1) {
+            $esAdmin = true;
+        }
+        return $esAdmin;
     }
 
     function crearUsuario()

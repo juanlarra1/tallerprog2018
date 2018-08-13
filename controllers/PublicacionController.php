@@ -6,9 +6,11 @@ require_once('models/PublicacionModel.php');
 require_once('models/CategoriaModel.php');
 require_once('librerias/seguridad.php');
 
-class PublicacionController extends BaseController {
+class PublicacionController extends BaseController
+{
 
-    function ListadoAction() {
+    function ListadoAction()
+    {
 
         $publicacionModel = new PublicacionModel();
 
@@ -20,20 +22,21 @@ class PublicacionController extends BaseController {
         $this->render("listadoPublicaciones", $sendData);
     }
 
-    function RegistroAction() {
+    function RegistroAction()
+    {
         $publicacionModel = new PublicacionModel();
         if (!empty($_POST)) {
             $titulo = xss_clean($_POST['txtTituloPublicacion']);
             $texto = xss_clean($_POST['txtTextoPublicacion']);
-            $fecha = xss_clean($_POST['date']);
-            $imagen = xss_clean($_POST['txtImagenPublicacion']);
-            $categoria = xss_clean($_POST['txtCategoriaPublicacion']);
+            $fecha = $_POST['date'];
+            $imagen = $_POST['txtImagenPublicacion'];
+            $categoria = $_POST['txtCategoriaPublicacion'];
 
             $publicacionModel->titulo = $titulo;
             $publicacionModel->texto = $texto;
             $publicacionModel->fecha = $fecha;
             $publicacionModel->imagen = $imagen;
-            $publicacionModel->imagen = $categoria;
+            $publicacionModel->categoria = $categoria;
 
             if ($publicacionModel->existePublicacion() == null) {
 

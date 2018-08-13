@@ -6,9 +6,11 @@ require_once('models/UsuarioModel.php');
 require_once('models/PublicacionModel.php');
 require_once('librerias/seguridad.php');
 
-class SiteController extends BaseController {
+class SiteController extends BaseController
+{
 
-    function IndexAction() {
+    function IndexAction()
+    {
         $publicacionModel = new PublicacionModel();
 
         $listaRecetas = $publicacionModel->getRecetasHome();
@@ -19,7 +21,8 @@ class SiteController extends BaseController {
         $this->render("sites/index", ["Test" => "1", "recetas" => $listaRecetas, "notas" => $listaNotas]);
     }
 
-    function LoginAction() {
+    function LoginAction()
+    {
         $userModel = new UsuarioModel();
         if (!empty($_POST)) {
             $email = xss_clean($_POST['txtLoginEmail']);
@@ -31,6 +34,10 @@ class SiteController extends BaseController {
             $isLogged = $userModel->checkLogin();
             if ($isLogged) {
                 $_SESSION["user"] = $isLogged;
+
+                $_SESSION["user"]["esAdmin"] = $userModel->esAdmin();
+
+
                 header('Location: index.php?usuario/index');
                 exit;
             }
@@ -41,7 +48,8 @@ class SiteController extends BaseController {
         $this->render("login", $control);
     }
 
-    function LogoutAction() {
+    function LogoutAction()
+    {
         $_SESSION["user"] = null;
         header('Location: index.php?site/index');
     }
