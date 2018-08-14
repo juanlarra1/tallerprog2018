@@ -22,6 +22,8 @@
                     <span class="label label-warning">{$categoria}</span>
 <br><br />
                     <p class="well well-lg">{$publicacion['texto']}</p>
+                    <div class="card-body"></div>
+                    
                 </div>
             </div>
 
@@ -44,6 +46,17 @@
                                 <p>
                                   {$comentario['detalle']}          
                                 </p>
+                                
+                                <header class="text-left">
+                                    <div class="comment-post arrow left"><i class="glyphicon glyphicon-share-alt"></i>Respuesta:</div>
+                               </header>     
+                                <div class="comment-post" > <br>
+                                        <p>
+                                               {$comentario['respuesta']}
+                                        </p>
+                                    </div>
+                             
+                  
                             </div>
                         </div>
                     </div>
