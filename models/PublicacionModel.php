@@ -139,10 +139,7 @@ class PublicacionModel
     function crearPublicacion()
     {
         $cn = $this->conectarDB();
-
-
         if ($cn) {
-
 
             if (!$this->existePublicacion()) {
                 $cn->consulta(

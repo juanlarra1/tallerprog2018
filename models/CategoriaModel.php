@@ -13,7 +13,7 @@ class CategoriaModel
 
     function conectarDB()
     {
-        $conn = new ConexionBD(MOTOR, "localhost", "Obligatorio", "root", "root");
+        $conn = new ConexionBD(MOTOR, SERVIDOR, BASE, USUARIO, CLAVE);
         $conn->conectar();
         return $conn;
     }

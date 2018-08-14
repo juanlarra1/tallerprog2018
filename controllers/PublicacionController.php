@@ -4,6 +4,7 @@ require_once('librerias/smarty/libs/Smarty.class.php');
 require_once('BaseController.php');
 require_once('models/PublicacionModel.php');
 require_once('models/CategoriaModel.php');
+require_once('models/ComentarioModel.php');
 require_once('librerias/seguridad.php');
 
 
@@ -23,8 +24,6 @@ class PublicacionController extends BaseController
 
         $this->render("listadoPublicaciones", $sendData);
     }
-
-
 
     function RegistroAction()
     {
@@ -67,8 +66,16 @@ class PublicacionController extends BaseController
         $publicacion = $publicacionModel->getPublicacion();
         $cat_data->id = $publicacion['categoria_id'];
 
-        $sendData = array("publicacion" => $publicacion, "categoria"=> $cat_data->getCategoriaNombre());
+        $comentarioModel = new ComentarioModel();
+        $comentarios = $comentarioModel->getAllCommentarios();
+       
+        $sendData = array("publicacion" => $publicacion, 
+            "categoria"=> $cat_data->getCategoriaNombre(), 
+            "comentarios" =>$comentarios);
         $this->render("publicacion",$sendData);
 
     }
+    
+    
+    
 }

@@ -29,26 +29,27 @@
             <!-- COMENTARIOS ACA ABAJO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             <p class="lead">Comentarios</p>
             <article class="row">
-
+            {foreach from=$comentarios item=comentario}
+    
                 <div class="col-md-12 col-sm-10">
                     <div class="panel panel-default arrow left">
                         <div class="panel-body">
                             <header class="text-left">
-                                <div class="comment-user"><i class="glyphicon glyphicon-user"></i> That Guy</div>
-                                <time class="comment-date" datetime="16-12-2014 01:05"><i
-                                            class="glyphicon glyphicon-time"></i> Dec 16, 2014
+                                <div class="comment-user"><i class="glyphicon glyphicon-user"></i>{$comentario['nombre']}</div>
+                                <time class="comment-date" datetime="16-12-2014"><i
+                                            class="glyphicon glyphicon-time"></i>  {$comentario['fecha']}
                                 </time>
                             </header>
                             <div class="comment-post">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                  {$comentario['detalle']}          
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                {/foreach}
             </article>
 
         </div>
