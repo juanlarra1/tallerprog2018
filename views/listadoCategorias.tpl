@@ -12,9 +12,9 @@
             {if $categoria['eliminada'] eq 0 }  
                 <li class="list-group-item">
                  <p>{$categoria['nombre']}</p>
-                   <a href="index.php?op=admin/upgradeAdmin&user={$categoria['categoria_id']}" class="btn btn-primary btn-sm active"
+                   <a href="index.php?op=categoria/upgradeCategoria&categoria={$categoria['categoria_id']}" class="btn btn-primary btn-sm active"
                    role="button" aria-pressed="true"><i class="glyphicon glyphicon-pencil"></i>Modificar</a>
-                    <a href="index.php?op=admin/upgradeAdmin&user={$categoria['categoria_id']}" class="btn btn-primary btn-sm active"
+                    <a href="index.php?op=categoria/deleteCategoria&categoria={$categoria['categoria_id']}" class="btn btn-primary btn-sm active"
                    role="button" aria-pressed="true"><i class="glyphicon glyphicon-trash"></i>Eliminar</a>
             {/if}
              </li>

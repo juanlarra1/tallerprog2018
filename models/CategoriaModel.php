@@ -17,6 +17,23 @@ class CategoriaModel
         $conn->conectar();
         return $conn;
     }
+    
+    function eliminarCategoria(){
+        $conn = $this->conectarDB();
+            
+        if ($conn) {
+            $sql = "UPDATE categorias SET eliminado = 1 WHERE categoria_id = :cat";
+
+            $parametros = array();
+            $parametros[0] = array("cat", $this->id, "string");
+            $result = $conn->consulta($sql, $parametros);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
     function existeCategoria()
     {
@@ -95,7 +112,7 @@ class CategoriaModel
     {
         $cn = $this->conectarDB();
         $offset = CANTXPAG * ($numeroPagina - 1);
-        $sql = "select * from categorias ";
+        $sql = "select * from categorias WHERE eliminado = 0";
         $parametros = array();
         $sql .= " LIMIT :cantPag OFFSET :offset";
         array_push($parametros, array("cantPag", CANTXPAG, 'int'));

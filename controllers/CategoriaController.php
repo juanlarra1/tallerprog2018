@@ -7,6 +7,16 @@ require_once('librerias/seguridad.php');
 
 class CategoriaController extends BaseController {
 
+     function deleteCategoriaAction()
+    {
+        $categoriaModel = new CategoriaModel();
+        $categoriaModel->id = $_GET['categoria'];
+        
+        $categoriaModel->eliminarCategoria();
+        $this->ListadoAction();
+    }
+
+    
     function RegistroAction() {
         $categoriaModel = new CategoriaModel();
         if (!empty($_POST)) {
