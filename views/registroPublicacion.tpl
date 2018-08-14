@@ -33,7 +33,6 @@
                 <input id="imagen" name="imagen" size="30" type="file" value="" class="form-control">
             </div>
 
-
             <div class="form-group">
                 <label for="txtCategoriaPublicacion">Categoria:</label>
                 <select class="selectpicker" id="txtCategoriaPublicacion" name="txtCategoriaPublicacion">
@@ -41,9 +40,21 @@
                         <option value="{$categoria['categoria_id']}">{$categoria['nombre']}</option>
                     {/foreach}
                 </select>
-
-
             </div>
+            <div class="form-group">
+                <label for="txtTiposPublicacion">Tipos:</label>
+                <select class="selectpicker" id="txtTiposPublicacion" name="txtTiposPublicacion">
+                    {foreach from=$tipos item=tipo}
+                        <option value="{$tipo['tipo_id']}">{$tipo['nombre']}</option>
+                    {/foreach}
+                </select>
+            </div>
+                    
+                
+                
+                
+                
+
             <input type="submit" value="Guardar" id="btnGrabarCategoria" class="btn-primary btn-lg">
             <input type="reset" value="Cancelar" id="btnCancelarCategoria" class="btn-primary btn-lg">
         </form>

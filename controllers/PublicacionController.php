@@ -30,7 +30,8 @@ class PublicacionController extends BaseController {
         }
         $listaTiposPublicaciones = $publicacionModel->getAllTiposPublicaciones();
 
-        $sendData = array("publicaciones" => $listaPublicaciones, "tipo" => $tipoPubli, "tiposPublicaciones" => $listaTiposPublicaciones);
+        $sendData = array("publicaciones" => $listaPublicaciones, "tipo" => $tipoPubli, 
+            "tiposPublicaciones" => $listaTiposPublicaciones);
 
         $this->render("listadoPublicaciones", $sendData);
     }
@@ -67,12 +68,16 @@ class PublicacionController extends BaseController {
             }
             $categoria = $_POST['txtCategoriaPublicacion'];
 
+            $tipo = $_POST['txtTiposPublicacion'];
+
             $publicacionModel->titulo = $titulo;
             $publicacionModel->texto = $texto;
             $publicacionModel->fecha = $fecha;
             $publicacionModel->imagen = $nombre_img;
             $publicacionModel->categoria = $categoria;
+            $publicacionModel->tipo = $tipo;
 
+            
             if ($publicacionModel->existePublicacion() == null) {
 
                 $publicacionModel->crearPublicacion();
@@ -84,8 +89,9 @@ class PublicacionController extends BaseController {
         $categoriaModel = new CategoriaModel();
 
         $listaCategorias = $categoriaModel->getCategorias();
-
-        $control = array("publicacionModel" => $publicacionModel, "categorias" => $listaCategorias);
+        $listaTipos = $publicacionModel->getAllTiposPublicaciones();
+        $control = array("publicacionModel" => $publicacionModel, 
+            "tipos" => $listaTipos, "categorias" => $listaCategorias);
 
         $this->render("registroPublicacion", $control);
     }
