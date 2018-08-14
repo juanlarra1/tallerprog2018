@@ -3,6 +3,23 @@
     border-color: #F47803;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #F47803;
+    border-color: #F47803;
+}
+
+.btn-primary {
+    background-image: -webkit-linear-gradient(top,#F47803 0,#F47803 100%); 
+    background-image: -o-linear-gradient(top,#F47803 0,#F47803 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#337ab7),to(#F47803)); 
+    background-image: linear-gradient(to bottom,#F47803 0,#F47803 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F47803', endColorstr='#F47803', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #F47803;
+}
+
 a {
     color: #F47803;
     text-decoration: none;

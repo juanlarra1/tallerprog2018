@@ -2,8 +2,7 @@
 
 require_once("librerias/class.Conexion.BD.php");
 
-class UsuarioModel
-{
+class UsuarioModel {
 
     var $email;
     var $password;
@@ -11,15 +10,13 @@ class UsuarioModel
     var $nombre;
     var $errors = ['email' => [], 'password' => [], 'nombre' => []];
 
-    function conectarDB()
-    {
-        $conn = new ConexionBD("mysql", "localhost", "Obligatorio", "root", "root");
+    function conectarDB() {
+        $conn = new ConexionBD(MOTOR, SERVIDOR, BASE, USUARIO, CLAVE);
         $conn->conectar();
         return $conn;
     }
 
-    function getAllUsuarios($numeroPagina, $esAdmin)
-    {
+    function getAllUsuarios($numeroPagina, $esAdmin) {
         $cn = $this->conectarDB();
         $offset = CANTXPAG * ($numeroPagina - 1);
         $sql = "select * from usuarios ";
@@ -38,15 +35,14 @@ class UsuarioModel
         return $res;
     }
 
-    function checkLogin()
-    {
+    function checkLogin() {
         $con = $this->conectarDB();
         if (!$con->conectar()) {
 
             echo("error bd");
         } else {
             $con->consulta(
-                "select * from usuarios where email=:ema and password=:cla", array(
+                    "select * from usuarios where email=:ema and password=:cla", array(
                 array("ema", $this->email, 'string'),
                 array("cla", $this->password, 'string')
             ));
@@ -59,12 +55,11 @@ class UsuarioModel
         }
     }
 
-    function existeUsuario()
-    {
+    function existeUsuario() {
         $existeUsuario = false;
         $cn = $this->conectarDB();
         $cn->consulta(
-            "select * from usuarios where email=:ema", array(
+                "select * from usuarios where email=:ema", array(
             array("ema", $this->email, 'string')
         ));
         $res = $cn->siguienteRegistro();
@@ -74,12 +69,11 @@ class UsuarioModel
         return $existeUsuario;
     }
 
-    function esAdmin()
-    {
+    function esAdmin() {
         $esAdmin = false;
         $cn = $this->conectarDB();
         $cn->consulta(
-            "select * from usuarios where email=:ema", array(
+                "select * from usuarios where email=:ema", array(
             array("ema", $this->email, 'string')
         ));
         $res = $cn->siguienteRegistro();
@@ -89,13 +83,12 @@ class UsuarioModel
         return $esAdmin;
     }
 
-    function crearUsuario()
-    {
+    function crearUsuario() {
         $cn = $this->conectarDB();
         $cn->consulta(
-            "insert into usuarios"
-            . "(email, password, administrador, nombre)"
-            . " values(:ema, :pas, :adm, :nom)", array(
+                "insert into usuarios"
+                . "(email, password, administrador, nombre)"
+                . " values(:ema, :pas, :adm, :nom)", array(
             array("ema", $this->email, 'string'),
             array("pas", md5($this->password), 'string'),
             array("adm", 0, 'int'),
@@ -103,8 +96,7 @@ class UsuarioModel
         ));
     }
 
-    function ascenderUsuario()
-    {
+    function ascenderUsuario() {
         $conn = $this->conectarDB();
         if ($conn) {
             $sql = "UPDATE usuarios SET administrador = 1";
@@ -121,8 +113,7 @@ class UsuarioModel
         }
     }
 
-    function validarUsuario()
-    {
+    function validarUsuario() {
         $isValid = true;
 
         if (!$this->validarEmail()) {
@@ -148,8 +139,7 @@ class UsuarioModel
         return $isValid;
     }
 
-    function validarEmail()
-    {
+    function validarEmail() {
         $isValid = true;
         $patron = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/";
         if (!preg_match($patron, $this->email)) {
@@ -159,8 +149,7 @@ class UsuarioModel
         return $isValid;
     }
 
-    function validarPassword()
-    {
+    function validarPassword() {
         $isValid = false;
         $patron = "/^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/";
         if (strlen($this->password) >= 8 && preg_match($patron, $this->password)) {
@@ -170,8 +159,7 @@ class UsuarioModel
         return $isValid;
     }
 
-    function validarNombre()
-    {
+    function validarNombre() {
         $isValid = false;
 
         $patron = "/[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/";

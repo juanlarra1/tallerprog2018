@@ -3,7 +3,6 @@
 
     <div class="form-row text-center">
 
-
         <div class="col-lg-12">
 
             <div class="card mt-4">
@@ -12,8 +11,8 @@
                 <div class="form-row text-center">
                     <div class="col-12">
                         <br>
-                        <button type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Añadir a favoritos
+                        <a href="index.php?op=publicacion/marcarFavPublicacion&publicacion={$publicacion['publicacion_id']}" class="btn btn-primary btn-lg active"
+                             role="button" aria-pressed="true"><i class="glyphicon glyphicon-star"></i> Añadir a favoritos</a>
                         </button>
                     </div>
                 </div>

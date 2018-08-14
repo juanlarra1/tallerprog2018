@@ -71,6 +71,7 @@ class CategoriaModel
             }
         }
     }
+    
     function existeCategoria()
     {
         $existeCategoria = false;

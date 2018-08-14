@@ -1,6 +1,6 @@
+<link href="../css/estilos.css" rel="stylesheet" type="text/css"/>
+
 <div class="container">
-
-
     <h1 class="my-4">{$tipo}
         <small>Blog de Cocina presenta:</small>
     </h1>
