@@ -49,7 +49,6 @@ class PublicacionController extends BaseController
             }
         }
 
-
         $categoriaModel = new CategoriaModel();
 
         $listaCategorias = $categoriaModel->getAllCategorias();
@@ -76,6 +75,6 @@ class PublicacionController extends BaseController
 
     }
     
-    
+      
     
 }

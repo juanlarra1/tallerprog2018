@@ -30,6 +30,10 @@
 
             <!-- COMENTARIOS ACA ABAJO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
             <p class="lead">Comentarios</p>
+            
+             <button type="button" class="btn btn-default btn-sm" onclick="window.location.href='index.php?op=comentario/registro'">
+                 <span class="glyphicon glyphicon-plus" id="{$publicacion['publicacion_id']}" aria-hidden="true"></span> Añadir comentario
+                        </button>
             <article class="row">
             {foreach from=$comentarios item=comentario}
     
