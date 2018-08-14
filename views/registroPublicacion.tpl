@@ -11,7 +11,7 @@
         <h1> Alta Publicación</h1>
         <br><br>
 
-        <form method="POST" action="index.php?op=publicacion/registro" id="formPublicacion">
+        <form method="POST" action="index.php?op=publicacion/registro" enctype="multipart/form-data" id="formPublicacion">
 
             <div class="form-group">
                 <label for="txtTituloPublicacion">Titulo:</label>
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="txtImagenPublicacion">Imagen:</label>
-                <input type="text" id="txtImagenPublicacion" name="txtImagenPublicacion" value="" class="form-control">
+                <input id="imagen" name="imagen" size="30" type="file" value="" class="form-control">
             </div>
 
 

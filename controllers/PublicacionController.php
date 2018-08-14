@@ -7,13 +7,11 @@ require_once('models/CategoriaModel.php');
 require_once('models/ComentarioModel.php');
 require_once('librerias/seguridad.php');
 
+class PublicacionController extends BaseController {
 
-class PublicacionController extends BaseController
-{
     var $id;
 
-    function ListadoAction()
-    {
+    function ListadoAction() {
 
         $publicacionModel = new PublicacionModel();
 
@@ -22,7 +20,7 @@ class PublicacionController extends BaseController
             $listaPublicaciones = $publicacionModel->getAllFilterPublicaciones();
             if ($_GET['tipoPublicacion'] == 1) {
                 $tipoPubli = "Recetas";
-            }else{
+            } else {
                 $tipoPubli = "Notas";
             }
         } else {
@@ -36,20 +34,41 @@ class PublicacionController extends BaseController
         $this->render("listadoPublicaciones", $sendData);
     }
 
-    function RegistroAction()
-    {
+    function RegistroAction() {
         $publicacionModel = new PublicacionModel();
         if (!empty($_POST)) {
             $titulo = xss_clean($_POST['txtTituloPublicacion']);
             $texto = xss_clean($_POST['txtTextoPublicacion']);
             $fecha = $_POST['date'];
-            $imagen = $_POST['txtImagenPublicacion'];
+            $nombre_img = $_FILES['imagen']['name'];
+            $tipo = $_FILES['imagen']['type'];
+            $tamano = $_FILES['imagen']['size'];
+
+            if (($nombre_img == !NULL) && ($_FILES['imagen']['size'] <= 200000)) {
+                //indicamos los formatos que permitimos subir a nuestro servidor
+                if (($_FILES["imagen"]["type"] == "image/gif") || ($_FILES["imagen"]["type"] == "image/jpeg") || ($_FILES["imagen"]["type"] == "image/jpg") || ($_FILES["imagen"]["type"] == "image/png")) {
+                    // Ruta donde se guardarán las imágenes que subamos
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/intranet/uploads/';
+                    // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
+                    move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $nombre_img);
+                } else {
+                    //si no cumple con el formato
+                    echo "No se puede subir una imagen con ese formato ";
+                }
+            } else {
+                //si existe la variable pero se pasa del tamaño permitido
+                if ($nombre_img == !NULL)
+                    echo "La imagen es demasiado grande ";
+            }
+
+
+
             $categoria = $_POST['txtCategoriaPublicacion'];
 
             $publicacionModel->titulo = $titulo;
             $publicacionModel->texto = $texto;
             $publicacionModel->fecha = $fecha;
-            $publicacionModel->imagen = $imagen;
+            $publicacionModel->imagen = $nombre_img;
             $publicacionModel->categoria = $categoria;
 
             if ($publicacionModel->existePublicacion() == null) {
@@ -62,15 +81,14 @@ class PublicacionController extends BaseController
 
         $categoriaModel = new CategoriaModel();
 
-        $listaCategorias = $categoriaModel->getAllCategorias();
+        $listaCategorias = $categoriaModel->getCategorias();
 
         $control = array("publicacionModel" => $publicacionModel, "categorias" => $listaCategorias);
 
         $this->render("registroPublicacion", $control);
     }
 
-    function VerPublicacionAction()
-    {
+    function VerPublicacionAction() {
         $cat_data = new CategoriaModel();
         $publicacionModel = new PublicacionModel();
         $publicacionModel->id = $_GET['id'];
@@ -85,22 +103,18 @@ class PublicacionController extends BaseController
             "categoria" => $cat_data->getCategoriaNombre(),
             "comentarios" => $comentarios);
         $this->render("publicacion", $sendData);
-
     }
 
-    function ComentarPublicacionAction()
-    {
+    function ComentarPublicacionAction() {
 
         $comentarioModel = new ComentarioModel();
         $detalle = xss_clean($_POST['txtDetalle']);
-        $comentarioModel->usuario = (int)$_SESSION['user']['usuario_id'];
+        $comentarioModel->usuario = (int) $_SESSION['user']['usuario_id'];
         $comentarioModel->publi_id = $_GET['id'];
         $comentarioModel->detalle = $detalle;
         $comentarioModel->crearComentario();
         $this->id = $_GET['id'];
         $this->VerPublicacionAction();
-
     }
-
 
 }

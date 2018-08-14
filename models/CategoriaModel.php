@@ -160,5 +160,18 @@ class CategoriaModel
         return $res;
         
     }
+    
+     function getCategorias()
+    {
+        $cn = $this->conectarDB();
+        $sql = "select * from categorias";
+        $parametros = array();
+        
+        $cn->consulta($sql, $parametros);
+        $res = $cn->restantesRegistros();
+
+        return $res;
+        
+    }
 
 }

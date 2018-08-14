@@ -27,7 +27,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrar Publicaciones
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?op=publicacion/crear">Alta</a></li>
+                            <li><a href="index.php?op=publicacion/registro">Alta</a></li>
                             <li><a href="#">Baja </a></li>
                             <li><a href="#">Modificacion</a></li>
                         </ul>
