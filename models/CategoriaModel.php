@@ -34,7 +34,43 @@ class CategoriaModel
             }
         }
     }
+    
+    function activarCategoria(){
+        $conn = $this->conectarDB();
+            
+        if ($conn) {
+            $sql = "UPDATE categorias SET eliminado = 0 WHERE categoria_id = :cat";
 
+            $parametros = array();
+            $parametros[0] = array("cat", $this->id, "string");
+            $result = $conn->consulta($sql, $parametros);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    function modificarCategoria(){
+        $conn = $this->conectarDB();
+              
+        var_dump($this->nombre); exit();
+        
+        if ($conn) {
+            $sql = "UPDATE categorias SET nombre = :nom WHERE categoria_id = :cat";
+
+            $parametros = array();
+            $parametros[0] = array("nom", $this->nombre, "string");
+            $parametros[1] = array("cat", $this->id, "string");
+            $result = $conn->consulta($sql, $parametros);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
     function existeCategoria()
     {
         $existeCategoria = false;
@@ -112,7 +148,7 @@ class CategoriaModel
     {
         $cn = $this->conectarDB();
         $offset = CANTXPAG * ($numeroPagina - 1);
-        $sql = "select * from categorias WHERE eliminado = 0";
+        $sql = "select * from categorias";
         $parametros = array();
         $sql .= " LIMIT :cantPag OFFSET :offset";
         array_push($parametros, array("cantPag", CANTXPAG, 'int'));

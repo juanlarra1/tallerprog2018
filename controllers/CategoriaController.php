@@ -7,16 +7,35 @@ require_once('librerias/seguridad.php');
 
 class CategoriaController extends BaseController {
 
-     function deleteCategoriaAction()
-    {
+    function deleteCategoriaAction() {
         $categoriaModel = new CategoriaModel();
         $categoriaModel->id = $_GET['categoria'];
-        
+
         $categoriaModel->eliminarCategoria();
         $this->ListadoAction();
     }
-
     
+    function activarCategoriaAction() {
+        $categoriaModel = new CategoriaModel();
+        $categoriaModel->id = $_GET['categoria'];
+
+        $categoriaModel->activarCategoria();
+        $this->ListadoAction();
+    }
+
+    function updadeCategoriaAction() {
+        $categoriaModel = new CategoriaModel();
+        $categoriaModel->id = $_GET['categoria'];
+        $nombre = xss_clean($_POST['txtNomCategoriaNuevo']);
+        var_dump($nombre);
+        exit();
+        
+        $categoriaModel->nombre =$nombre;
+        $categoriaModel->modificarCategoria();
+        
+        $this->ListadoAction();
+    }
+
     function RegistroAction() {
         $categoriaModel = new CategoriaModel();
         if (!empty($_POST)) {
@@ -40,19 +59,17 @@ class CategoriaController extends BaseController {
         $this->render("registroCategoria", $control);
     }
 
-    function getCategoriaNombre($id){
+    function getCategoriaNombre($id) {
         $categoriaModel = new CategoriaModel();
 
-        $categoriaModel->id =  $id;
+        $categoriaModel->id = $id;
 
         return $categoriaModel->getCategoriaNombre();
-
     }
-    
-    function ListadoAction()
-    {
+
+    function ListadoAction() {
         $numeroPagina = empty($_GET['pag']) ? 1 : $_GET['pag'];
-        
+
         $categoriaModel = new CategoriaModel();
 
         $listaCategorias = $categoriaModel->getAllCategorias($numeroPagina);
@@ -64,8 +81,6 @@ class CategoriaController extends BaseController {
         } else {
             $this->render("listadoCategorias", $sendData);
         }
-    } 
-    
-    
-     
+    }
+
 }
