@@ -61,9 +61,8 @@ class CategoriaModel
                 $cn->consulta(
                     "insert into categorias"
                     . "(nombre, eliminado)"
-                    . " values(:nom, :elim)", array(
-                    array("nom", $this->nombre, 'string'),
-                    array("elim", $this->eliminado, 'int'),
+                    . " values(:nom, 0)", array(
+                    array("nom", $this->nombre, 'string'),                   
                 ));
             }
         }
@@ -92,17 +91,21 @@ class CategoriaModel
         }
     }
 
-    function getAllCategorias()
+    function getAllCategorias($numeroPagina)
     {
         $cn = $this->conectarDB();
+        $offset = CANTXPAG * ($numeroPagina - 1);
+        $sql = "select * from categorias ";
+        $parametros = array();
+        $sql .= " LIMIT :cantPag OFFSET :offset";
+        array_push($parametros, array("cantPag", CANTXPAG, 'int'));
+        array_push($parametros, array("offset", $offset, 'int'));
 
-        if ($cn) {
-            $cn->consulta(
-                "select * from categorias");
-            $res = $cn->restantesRegistros();
+        $cn->consulta($sql, $parametros);
+        $res = $cn->restantesRegistros();
 
-            return $res;
-        }
+        return $res;
+        
     }
 
 }

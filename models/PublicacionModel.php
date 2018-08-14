@@ -53,7 +53,7 @@ class PublicacionModel
         if ($cn) {
             $cn->consulta(
                 "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
-                . "p.fecha as fecha, p.imagen as imagen, c.nombre as nombre, c.categoria_id "
+                . "p.fecha as fecha, p.imagen as imagen, p.publicacion_id as publicacion_id,  c.nombre as nombre, c.categoria_id "
                 . " FROM publicaciones p, categorias c "
                 . "WHERE (p.tipo_id = 2 AND p.categoria_id = c.categoria_id)"
                 . "ORDER BY p.Fecha DESC limit 4");
@@ -73,7 +73,7 @@ class PublicacionModel
         if ($cn) {
             $cn->consulta(
                 "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
-                . "p.fecha as fecha, p.imagen as imagen, c.nombre as nombre, c.categoria_id "
+                . "p.fecha as fecha, p.imagen as imagen, p.publicacion_id as publicacion_id, c.nombre as nombre, c.categoria_id "
                 . " FROM publicaciones p, categorias c "
                 . "WHERE (p.tipo_id = 1 AND p.categoria_id = c.categoria_id)"
                 . "ORDER BY p.Fecha DESC limit 4");

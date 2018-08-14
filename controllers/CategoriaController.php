@@ -39,5 +39,23 @@ class CategoriaController extends BaseController {
 
     }
     
+    function ListadoAction()
+    {
+        $numeroPagina = empty($_GET['pag']) ? 1 : $_GET['pag'];
+        
+        $categoriaModel = new CategoriaModel();
+
+        $listaCategorias = $categoriaModel->getAllCategorias($numeroPagina);
+
+        $sendData = array("categorias" => $listaCategorias, "numPag" => $numeroPagina);
+
+        if ($_GET['ajax'] == "ajax") {
+            $this->renderPartial("listadoCategorias", $sendData);
+        } else {
+            $this->render("listadoCategorias", $sendData);
+        }
+    } 
+    
+    
      
 }

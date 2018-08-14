@@ -13,15 +13,13 @@
 
 
                 <li><a href="index.php?op=publicacion/listado">Publicaciones</a></li>
-
-
                 {if $smarty.session.user.esAdmin eq true}
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Administrar Categorias
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?op=categoria/crear" target="blank">Alta</a></li>
-                            <li><a href="index.php?op=categoria/index" target="blank">Alta</a></li>
+                            <li><a href="index.php?op=categoria/registro" target="blank">Alta</a></li>
+                            <li><a href="index.php?op=categoria/listado" target="blank">Mantenimiento</a></li>
                         </ul>
                     </li>
                     <li><a href="index.php?op=admin/listado">Administrar Usuarios</a></li>
