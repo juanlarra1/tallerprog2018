@@ -16,11 +16,22 @@ class PublicacionController extends BaseController
     {
 
         $publicacionModel = new PublicacionModel();
-        $publicacionModel ->categoria = $_GET['catPublicacion'];
-        $listaPublicaciones = $publicacionModel->getAllPublicaciones();
+
+        if (isset($_GET['tipoPublicacion'])) {
+            $publicacionModel->tipo = $_GET['tipoPublicacion'];
+            $listaPublicaciones = $publicacionModel->getAllFilterPublicaciones();
+            if ($_GET['tipoPublicacion'] == 1) {
+                $tipoPubli = "Recetas";
+            }else{
+                $tipoPubli = "Notas";
+            }
+        } else {
+            $listaPublicaciones = $publicacionModel->getAllPublicaciones();
+            $tipoPubli = "Todas las entradas";
+        }
         $listaTiposPublicaciones = $publicacionModel->getAllTiposPublicaciones();
 
-        $sendData = array("publicaciones" => $listaPublicaciones, "tiposPublicaciones" => $listaTiposPublicaciones);
+        $sendData = array("publicaciones" => $listaPublicaciones, "tipo" => $tipoPubli, "tiposPublicaciones" => $listaTiposPublicaciones);
 
         $this->render("listadoPublicaciones", $sendData);
     }
@@ -58,23 +69,38 @@ class PublicacionController extends BaseController
         $this->render("registroPublicacion", $control);
     }
 
-    function VerPublicacionAction(){
+    function VerPublicacionAction()
+    {
         $cat_data = new CategoriaModel();
         $publicacionModel = new PublicacionModel();
-        $publicacionModel ->id = $_GET['id'];
+        $publicacionModel->id = $_GET['id'];
         $publicacion = $publicacionModel->getPublicacion();
         $cat_data->id = $publicacion['categoria_id'];
 
         $comentarioModel = new ComentarioModel();
+        $comentarioModel->publi_id = $_GET['id'];
         $comentarios = $comentarioModel->getAllCommentarios();
-       
-        $sendData = array("publicacion" => $publicacion, 
-            "categoria"=> $cat_data->getCategoriaNombre(), 
-            "comentarios" =>$comentarios);
-        $this->render("publicacion",$sendData);
+
+        $sendData = array("publicacion" => $publicacion,
+            "categoria" => $cat_data->getCategoriaNombre(),
+            "comentarios" => $comentarios);
+        $this->render("publicacion", $sendData);
 
     }
-    
-      
-    
+
+    function ComentarPublicacionAction()
+    {
+
+        $comentarioModel = new ComentarioModel();
+        $detalle = xss_clean($_POST['txtDetalle']);
+        $comentarioModel->usuario = (int)$_SESSION['user']['usuario_id'];
+        $comentarioModel->publi_id = $_GET['id'];
+        $comentarioModel->detalle = $detalle;
+        $comentarioModel->crearComentario();
+        $this->id = $_GET['id'];
+        $this->VerPublicacionAction();
+
+    }
+
+
 }

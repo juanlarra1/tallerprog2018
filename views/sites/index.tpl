@@ -1,6 +1,6 @@
  <div  id="seccionRecetas" class="container col-md-6 border thin solid black">
     
-        <a href="index.php?op=publicacion/listado" alt="1"><h3>Recetas</h3></a>
+        <a href="index.php?op=publicacion/listado&tipoPublicacion=1" alt="1"><h3>Recetas</h3></a>
  
     {foreach from=$recetas item=receta} 
     <div class="panel panel-warning">
@@ -18,7 +18,7 @@
 </div>
 
 <div  id="seccionNotas" class="container col-md-6 border thin solid black">
-     <a href="index.php?op=publicacion/listado"><h3>Notas</h3></a>
+     <a href="index.php?op=publicacion/listado&tipoPublicacion=2"><h3>Notas</h3></a>
  
     {foreach from=$notas item=nota} 
     <div class="panel panel-warning">

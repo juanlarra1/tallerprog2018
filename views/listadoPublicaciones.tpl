@@ -1,7 +1,7 @@
 <div class="container">
 
 
-    <h1 class="my-4">RECETAS
+    <h1 class="my-4">{$tipo}
         <small>Blog de Cocina presenta:</small>
     </h1>
 
@@ -9,9 +9,7 @@
     {foreach from=$publicaciones item=publicacion}
         <div class="row">
             <div class="col-md-6">
-                <a href="#">
-                    <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/500x300"
-                         alt="RECETAAAAAAAAAAAAAAAAAA">
+                <img src="img/{$publicacion['imagen']}" height="300px" width="500px" alt=""/>
                 </a>
             </div>
             <div class="col-md-6">

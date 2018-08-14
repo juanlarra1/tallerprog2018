@@ -7,10 +7,12 @@ class PublicacionModel
 {
 
     var $titulo;
+    var $id;
     var $texto;
     var $fecha;
     var $imagen;
     var $categoria;
+    var $tipo;
     var $errors = ['titulo' => [], 'texto' => [], 'fecha' => [], 'imagen' => []];
 
     function conectarDB()
@@ -91,6 +93,24 @@ class PublicacionModel
 
             return $res;
         }
+    }
+
+
+    function getAllFilterPublicaciones(){
+        $cn = $this->conectarDB();
+
+        if ($cn) {
+            $cn->consulta(
+                "select * from publicaciones where tipo_id=:tip", array(
+                array("tip", $this->tipo, 'int')
+            ));
+            $res = $cn->restantesRegistros();
+
+
+        }
+        return $res;
+
+
     }
 
     function getAllTiposPublicaciones()
