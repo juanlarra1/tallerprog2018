@@ -34,7 +34,7 @@
       
     </ul>
     <ul class="pager" id="userPager">
-        <li><a href="index.php?op=categoria/listado&pag={$numPag-1}">Previous</a></li>
-        <li><a href="index.php?op=categoria/listado&pag={$numPag+1}">Next</a></li>
+        <li><a href="index.php?op=categoria/listado&pag={$pag-1}">Previous</a></li>
+        <li><a href="index.php?op=categoria/listado&pag={$pag+1}">Next</a></li>
     </ul>
 </div>

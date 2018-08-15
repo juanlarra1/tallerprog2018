@@ -31,8 +31,6 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Categorias
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="index.php?op=publicacion/listado&tipoPublicacion=2">Notas</a></li>
-                        <li><a href="index.php?op=publicacion/listado&tipoPublicacion=1">Recetas</a></li>
                         {if $smarty.session.user.esAdmin eq true}
                             <li><a href="index.php?op=categoria/registro" target="blank">Alta</a></li>
                             <li><a href="index.php?op=categoria/listado" target="blank">Mantenimiento</a></li>

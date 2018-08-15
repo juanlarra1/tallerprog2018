@@ -8,14 +8,14 @@
     </div>
 
 {/foreach}
-<div class="col-md-3"></div>
+<div class="col-md-4"></div>
 <div class="col-md-8">
 
 
     <ul id="seccionCategorias" class="container col-md-6 border thin solid black">
         <a href="index.php?op=categoria/listado"><h3>Categorias</h3></a>
         {foreach from=$categorias item=categoria}
-            <li class="list-group-item">
+            <li class="list-group-item text-center">
                 <h2>{$categoria['nombre']}</h2>
 
                 {if $categoria['eliminado'] eq 0}
@@ -23,16 +23,16 @@
                           action="index.php?op=categoria/modificarCategoria&categoria={$categoria['categoria_id']}"
                           id="formulario">
 
-                        <div class="input-group mb-3" id="modifCategoria" style="visibility: visible">
-                            <input type="text" class="form-control" name='txtNomCategoriaNuevo'
-                                   placeholder="Nombre de categoria"
-                                   aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        </div>
+
+                            <input type="text" class="form-control text-center" name='txtNomCategoriaNuevo'
+                                   placeholder="Nuevo nombre de categoria" >
 
 
+                        <br>
                         <input type="submit" value="Modificar" id="btnGuardarCambios" class="btn-primary btn-lg">
 
                     </form>
+                    <br>
                     <form method="POST"
                           action="index.php?op=categoria/eliminarCategoria&categoria={$categoria['categoria_id']}"
                     ">
@@ -47,11 +47,12 @@
 
             </li>
         {/foreach}
-
+        <ul class="pager" id="userPager">
+            <li><a href="index.php?op=categoria/listado&pag={$numPag-1}">Previous</a></li>
+            <li><a href="index.php?op=categoria/listado&pag={$numPag+1}">Next</a></li>
+        </ul>
 
     </ul>
-    <ul class="pager" id="userPager">
-        <li><a href="index.php?op=categoria/listado&pag={$numPag-1}">Previous</a></li>
-        <li><a href="index.php?op=categoria/listado&pag={$numPag+1}">Next</a></li>
-    </ul>
+
 </div>
+<div class="col-md-4"></div>

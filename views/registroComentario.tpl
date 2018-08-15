@@ -13,7 +13,6 @@
             <input type="text" id="txtRespuesta" name="txtRespuesta" value="" class="form-control">
            
         </div>
-        
         <input type="submit" value="Guardar" id="btnGrabarComentario" class="btn-primary btn-lg">
         <input type="reset" value="Cancelar" id="btnCancelarComentario" class="btn-primary btn-lg">
     </form>

@@ -5,7 +5,7 @@
     <script src="librerias/Bootstrap/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
 </div>
-<div>
+
 
     <div class="col-md-6 col-md-offset-3">
         <h1> Alta Publicación</h1>
@@ -55,4 +55,4 @@
             <input type="reset" value="Cancelar" id="btnCancelarCategoria" class="btn-primary btn-lg">
         </form>
     </div>
-</div>
+
