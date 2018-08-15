@@ -20,6 +20,7 @@ class PublicacionModel {
         return $conn;
     }
 
+    
     function activarPublicacion(){
         $conn = $this->conectarDB();
             
