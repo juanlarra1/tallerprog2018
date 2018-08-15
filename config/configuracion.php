@@ -6,5 +6,5 @@ define("BASE","Obligatorio");
 define("USUARIO","root");
 define("CLAVE","root");
 
-define("CANTXPAG",10);
+define("CANTXPAG",2);
 ?>

@@ -164,7 +164,7 @@ class CategoriaModel
      function getCategorias()
     {
         $cn = $this->conectarDB();
-        $sql = "select * from categorias";
+        $sql = "select * from categorias where eliminado=0";
         $parametros = array();
         
         $cn->consulta($sql, $parametros);

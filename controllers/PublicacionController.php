@@ -10,32 +10,34 @@ require_once('librerias/seguridad.php');
 
 class PublicacionController extends BaseController
 {
-
+    var $entidad = 'publicacion';
     var $id;
 
     function ListadoAction()
     {
 
-        $publicacionModel = new PublicacionModel();
+        $model = new PublicacionModel();
+        $pag = empty($_POST['pag']) ? 1 : $_POST['pag'];
+        $model->tipo = $_POST['tipo'];
+        $model->categoria = $_POST['categoria'];
 
-        if (isset($_GET['tipoPublicacion'])) {
-            $publicacionModel->tipo = $_GET['tipoPublicacion'];
-            $listaPublicaciones = $publicacionModel->getAllFilterTipoPublicaciones();
-            if ($_GET['tipoPublicacion'] == 1) {
-                $tipoPubli = "Recetas";
-            } else {
-                $tipoPubli = "Notas";
-            }
+        $records = $model->getAllRecords($pag);
+
+        $data = array(
+            "entidad"=>$this->entidad,
+            "publicaciones" => $records,
+            "categorias"=> $model->getAllCategorias(),
+            "tipos" => $model->getAllTiposPublicaciones(),
+            "model" => $model,
+            "pag"=>$pag,
+            "extraScripts"=> array("recursos/js/listado.js")
+        );
+        if(isset($_GET['ajax'])) {
+            $this->renderPartial("$this->entidad/listado", $data);
         } else {
-            $listaPublicaciones = $publicacionModel->getAllPublicaciones();
-            $tipoPubli = "Todas las entradas";
+            $this->render("$this->entidad/listado", $data);
         }
-        $listaTiposPublicaciones = $publicacionModel->getAllTiposPublicaciones();
 
-        $sendData = array("publicaciones" => $listaPublicaciones, "tipo" => $tipoPubli,
-            "tiposPublicaciones" => $listaTiposPublicaciones);
-
-        $this->render("listadoPublicaciones", $sendData);
     }
 
 
