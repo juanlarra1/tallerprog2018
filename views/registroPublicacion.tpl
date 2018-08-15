@@ -23,15 +23,10 @@
                
             </div>
 
-            <div class="form-group"> <!-- Date input -->
-                <label class="control-label" for="date">Fecha Publicacion:</label>
-                <input class="form-control" id="date" name="date" placeholder="DD/MM/AAAA" type="text"/>
-            </div>
-
 
             <div class="form-group">
                 <label for="txtImagenPublicacion">Imagen:</label>
-                <input id="imagen" name="imagen" size="30" type="file" value="" class="form-control">
+                <input type="file" id="imagen" name="imagen" value=""/>
             </div>
 
             <div class="form-group">

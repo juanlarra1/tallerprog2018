@@ -27,7 +27,7 @@ class PublicacionModel {
             $sql = "UPDATE publicaciones SET eliminado = 0 WHERE publicacion_id = :pub";
 
             $parametros = array();
-            $parametros[0] = array("pub", $this->id, "string");
+            $parametros[0] = array("pub", $this->id, "int");
             $result = $conn->consulta($sql, $parametros);
             if ($result) {
                 return true;
@@ -45,7 +45,7 @@ class PublicacionModel {
             $sql = "UPDATE publicaciones SET eliminado = 1 WHERE publicacion_id = :pub";
 
             $parametros = array();
-            $parametros[0] = array("pub", $this->id, "string");
+            $parametros[0] = array("pub", $this->id, "int");
             $result = $conn->consulta($sql, $parametros);
             if ($result) {
                 return true;
@@ -83,8 +83,8 @@ class PublicacionModel {
                     "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
                     . "p.fecha as fecha, p.imagen as imagen, p.publicacion_id as publicacion_id,  c.nombre as nombre, c.categoria_id "
                     . " FROM publicaciones p, categorias c "
-                    . "WHERE (p.tipo_id = 2 AND p.categoria_id = c.categoria_id)"
-                    . "ORDER BY p.Fecha DESC limit 4");
+                    . "WHERE (p.tipo_id = 2 AND p.categoria_id = c.categoria_id AND p.eliminado = 0)"
+                    . "ORDER BY p.Fecha ASC limit 4");
             $res = $cn->restantesRegistros();
             return $res;
         }
@@ -102,7 +102,7 @@ class PublicacionModel {
                     "SELECT p.titulo as titulo, SUBSTRING(p.texto, 1, 150) as texto, "
                     . "p.fecha as fecha, p.imagen as imagen, p.publicacion_id as publicacion_id, c.nombre as nombre, c.categoria_id "
                     . " FROM publicaciones p, categorias c "
-                    . "WHERE (p.tipo_id = 1 AND p.categoria_id = c.categoria_id)"
+                    . "WHERE (p.tipo_id = 1 AND p.categoria_id = c.categoria_id AND p.eliminado = 0)"
                     . "ORDER BY p.Fecha DESC limit 4");
             $res = $cn->restantesRegistros();
             return $res;
@@ -121,12 +121,12 @@ class PublicacionModel {
         }
     }
 
-    function getAllFilterPublicaciones() {
+    function getAllFilterTipoPublicaciones() {
         $cn = $this->conectarDB();
 
         if ($cn) {
             $cn->consulta(
-                    "select * from publicaciones where tipo_id=:tip", array(
+                    "select * from publicaciones where tipo_id=:tip and eliminado = 0", array(
                 array("tip", $this->tipo, 'int')
             ));
             $res = $cn->restantesRegistros();
@@ -134,12 +134,27 @@ class PublicacionModel {
         return $res;
     }
 
+
+    function getAllFilterCategoriasPublicaciones() {
+        $cn = $this->conectarDB();
+
+        if ($cn) {
+            $cn->consulta(
+                "select * from publicaciones where categoria_id=:cat and eliminado = 0", array(
+                array("cat", $this->categoria, 'int')
+            ));
+            $res = $cn->restantesRegistros();
+        }
+        return $res;
+    }
+
+
     function getAllTiposPublicaciones() {
         $cn = $this->conectarDB();
 
         if ($cn) {
             $cn->consulta(
-                    "select * from tipos");
+                    "select * from tipos ");
             $res = $cn->restantesRegistros();
 
             return $res;
@@ -151,7 +166,7 @@ class PublicacionModel {
 
         if ($cn) {
             $cn->consulta(
-                    "select * from categorias");
+                    "select * from categorias where eliminado=0");
             $res = $cn->restantesRegistros();
             return $res;
         }
@@ -175,6 +190,9 @@ class PublicacionModel {
     }
 
     function crearPublicacion() {
+
+        $date = date_create();
+        $this->fecha = date_format($date, 'Y-m-d H:i:s');
         $cn = $this->conectarDB();
         if ($cn) {
 
@@ -185,7 +203,7 @@ class PublicacionModel {
                         . " values(:tit, :tex, :fec, :img, :cat, :tipo, :usu)", array(
                     array("tit", $this->titulo, 'string'),
                     array("tex", $this->texto, 'string'),
-                    array("fec", $this->fecha, 'string'),
+                    array("fec", $this->fecha, 'datetime'),
                     array("img", $this->imagen, 'string'),
                     array("cat", $this->categoria, 'int'),
                     array("tipo", $this->tipo, 'int'),
@@ -195,22 +213,6 @@ class PublicacionModel {
         }
     }
 
-    function borrarPublicacion() {
-        $cn = $this->conectarDB();
-        if ($cn) {
-            $sql = "DELETE FROM publicaciones WHERE id = :id";
-            $parametros = array();
-            $parametros[0] = array("id", $id, "int");
 
-            $result = $cn->consulta($sql, $parametros);
-
-            if ($result) {
-                header("Location: index.php");
-            } else {
-
-                header("Location: errores.php");
-            }
-        }
-    }
 
 }

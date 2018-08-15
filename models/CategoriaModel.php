@@ -55,14 +55,13 @@ class CategoriaModel
     function modificarCategoria(){
         $conn = $this->conectarDB();
               
-        var_dump($this->nombre); exit();
-        
+
         if ($conn) {
             $sql = "UPDATE categorias SET nombre = :nom WHERE categoria_id = :cat";
 
             $parametros = array();
             $parametros[0] = array("nom", $this->nombre, "string");
-            $parametros[1] = array("cat", $this->id, "string");
+            $parametros[1] = array("cat", $this->id, "int");
             $result = $conn->consulta($sql, $parametros);
             if ($result) {
                 return true;

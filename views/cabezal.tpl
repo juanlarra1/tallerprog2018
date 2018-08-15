@@ -12,26 +12,37 @@
                 <li class="active"><a href="index.php">Home</a></li>
 
 
-                <li><a href="index.php?op=publicacion/listado">Publicaciones</a></li>
-                {if $smarty.session.user.esAdmin eq true}
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Administrar Categorias
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.php?op=categoria/registro" target="blank">Alta</a></li>
-                            <li><a href="index.php?op=categoria/listado" target="blank">Mantenimiento</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.php?op=admin/listado">Administrar Usuarios</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrar Publicaciones
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="index.php?op=publicacion/listado">Publicaciones
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.php?op=publicacion/listado">Ver Todas</a></li>
+                        {if !empty($smarty.session.user)}
+                            <li><a href="index.php?op=favorito/listado">Favoritos</a></li>
+                        {/if}
+
+                        {if $smarty.session.user.esAdmin eq true}
                             <li><a href="index.php?op=publicacion/registro">Alta</a></li>
                             <li><a href="index.php?op=publicacion/listadoBP">Mantenimiento </a></li>
-                        </ul>
-                    </li>
+                        {/if}
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Categorias
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.php?op=publicacion/listado&tipoPublicacion=2">Notas</a></li>
+                        <li><a href="index.php?op=publicacion/listado&tipoPublicacion=1">Recetas</a></li>
+                        {if $smarty.session.user.esAdmin eq true}
+                            <li><a href="index.php?op=categoria/registro" target="blank">Alta</a></li>
+                            <li><a href="index.php?op=categoria/listado" target="blank">Mantenimiento</a></li>
+                        {/if}
+                    </ul>
+                </li>
+                {if $smarty.session.user.esAdmin eq true}
+                    <li><a href="index.php?op=admin/listado">Administrar Usuarios</a></li>
                 {/if}
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {if !empty($smarty.session.user)}
