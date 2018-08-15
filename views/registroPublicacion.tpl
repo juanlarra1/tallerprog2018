@@ -19,7 +19,8 @@
             </div>
             <div class="form-group">
                 <label for="txtTextoPublicacion">Texto:</label>
-                <input type="text" id="txtTextoPublicacion" name="txtTextoPublicacion" value="" class="form-control">
+                <textarea class="form-control rounded-0" id="txtTextoPublicacion" name="txtTextoPublicacion" rows="10"></textarea>
+               
             </div>
 
             <div class="form-group"> <!-- Date input -->

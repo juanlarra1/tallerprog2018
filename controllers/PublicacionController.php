@@ -83,7 +83,7 @@ class PublicacionController extends BaseController {
                         ($_FILES["imagen"]["type"] == "image/jpg") || 
                         ($_FILES["imagen"]["type"] == "image/png")) {
                     // Ruta donde se guardarán las imágenes que subamos
-                    $directorio = $_SERVER['DOCUMENT_ROOT'] . 'img/';
+                    $directorio = "img/";
                     // Muevo la imagen desde el directorio temporal a nuestra ruta indicada anteriormente
                     move_uploaded_file($_FILES['imagen']['tmp_name'], $directorio . $nombre_img);
                 } else {
@@ -95,6 +95,8 @@ class PublicacionController extends BaseController {
                 if ($nombre_img == !NULL)
                     echo "La imagen es demasiado grande ";
             }
+            
+            
             $categoria = $_POST['txtCategoriaPublicacion'];
 
             $tipo = $_POST['txtTiposPublicacion'];
