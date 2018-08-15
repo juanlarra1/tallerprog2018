@@ -20,10 +20,8 @@
                     <a href="index.php?op=publicacion/deletePublicacion&publicacion={$publicacion['publicacion_id']}" class="btn btn-primary btn-sm active"
                    role="sub" aria-pressed="true"><i class="glyphicon glyphicon-trash"></i>Eliminar</a>
                   
-                </form>
                   {else}
-                  
-                    <a href="index.php?op=categoria/activarCategoria&categoria={$categoria['categoria_id']}" class="btn btn-primary btn-sm active"
+                    <a href="index.php?op=publicacion/activarPublicacion&publicacion={$publicacion['publicacion_id']}" class="btn btn-primary btn-sm active"
                    role="button" aria-pressed="true"><i class="glyphicon glyphicon-ok"></i>Activar</a>
                       
                   {/if}

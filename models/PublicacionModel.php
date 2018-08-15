@@ -20,6 +20,24 @@ class PublicacionModel {
         return $conn;
     }
 
+    function activarPublicacion(){
+        $conn = $this->conectarDB();
+            
+        if ($conn) {
+            $sql = "UPDATE publicaciones SET eliminado = 0 WHERE publicacion_id = :pub";
+
+            $parametros = array();
+            $parametros[0] = array("pub", $this->id, "string");
+            $result = $conn->consulta($sql, $parametros);
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    
     function eliminarPublicacion(){
         $conn = $this->conectarDB();
             

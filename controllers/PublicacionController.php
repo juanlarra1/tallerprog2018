@@ -45,6 +45,13 @@ class PublicacionController extends BaseController {
         $this->ListadoAction();
     }
     
+    function activarPublicacionAction() {
+        $publicacionModel = new PublicacionModel();
+        $publicacionModel->id = $_GET['publicacion'];
+
+        $publicacionModel->activarPublicacion();
+        $this->ListadoAction();
+    }
     
     function ListadoBPAction() {
 

@@ -28,8 +28,7 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="index.php?op=publicacion/registro">Alta</a></li>
-                            <li><a href="index.php?op=publicacion/listadoBP">Baja </a></li>
-                            <li><a href="#">Modificacion</a></li>
+                            <li><a href="index.php?op=publicacion/listadoBP">Mantenimiento </a></li>
                         </ul>
                     </li>
                 {/if}
