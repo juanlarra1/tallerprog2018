@@ -35,6 +35,28 @@ class PublicacionController extends BaseController {
 
         $this->render("listadoPublicaciones", $sendData);
     }
+    
+   
+    function deletePublicacionAction() {
+        $publicacionModel = new PublicacionModel();
+        $publicacionModel->id = $_GET['publicacion'];
+
+        $publicacionModel->eliminarPublicacion();
+        $this->ListadoAction();
+    }
+    
+    
+    function ListadoBPAction() {
+
+        $publicacionModel = new PublicacionModel();
+
+        $listaPublicaciones = $publicacionModel->getAllPublicaciones();
+       
+             
+        $sendData = array("publicaciones" => $listaPublicaciones);
+
+        $this->render("publicaciones", $sendData);
+    }
 
     function RegistroAction() {
         $publicacionModel = new PublicacionModel();
